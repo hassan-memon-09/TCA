@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.chat-bubble {
+  @apply p-2 rounded-lg max-w-xs;
+}
+.chat-bubble--sent {
+  @apply bg-blue-500 text-white ml-auto;
+}
+.chat-bubble--received {
+  @apply bg-gray-200 mr-auto;
+}
