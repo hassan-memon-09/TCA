@@ -77,6 +77,18 @@ const Header = () => {
               >
                 Contact
               </NavLink>
+               <NavLink
+                to="/policy"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/chat"
+                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Chat
+              </NavLink>
               {!user ? (
                 <>
                   <NavLink
@@ -114,18 +126,7 @@ const Header = () => {
                   )}
                 </div>
               )}
-              <NavLink
-                to="/policy"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Policy
-              </NavLink>
-              <NavLink
-                to="/chat"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Chat
-              </NavLink>
+             
             </div>
           </div>
         </div>

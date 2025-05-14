@@ -62,64 +62,74 @@ const Register = () => {
           <h2 className="text-3xl font-bold text-center mb-6 text-white">Register</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-           <div className="relative">
-  <HiOutlineUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+
+            {/* Name Field */}
+            <div className="relative">
+  <HiOutlineUser className="absolute left-4 top-3.5 text-gray-400 text-xl" />
   <input
     type="text"
     value={name}
     onChange={(e) => setName(e.target.value)}
-    placeholder="Name"
-    className="w-full pl-10 p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    placeholder="Enter Your Name"
+    className="w-full pl-14 py-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
     required
     autoFocus
   />
 </div>
-<div className="relative">
-  <HiOutlineMail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+
+            {/* Email Field */}
+            <div className="relative">
+  <HiOutlineMail className="absolute left-4 top-3.5 text-gray-400 text-xl" />
   <input
     type="email"
     value={email}
     onChange={(e) => setEmail(e.target.value)}
-    placeholder="Email"
-    className="w-full pl-10 p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    placeholder="Enter Your Email"
+    className="w-full pl-14 py-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
     required
   />
 </div>
-<div className="relative">
-  <HiOutlineLockClosed className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+
+            {/* Password Field */}
+          <div className="relative">
+  <HiOutlineLockClosed className="absolute left-4 top-3.5 text-gray-400 text-xl" />
   <input
     type="password"
     value={password}
     onChange={(e) => setPassword(e.target.value)}
-    placeholder="Password"
-    className="w-full pl-10 p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    placeholder="Enter Your Password"
+    className="w-full pl-14 py-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
     required
   />
 </div>
-<div className="relative">
-  <HiOutlinePhone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+
+            {/* Phone Field */}
+      <div className="relative">
+  <HiOutlinePhone className="absolute left-4 top-3.5 text-gray-400 text-xl" />
   <input
     type="text"
     value={phone}
     onChange={(e) => setPhone(e.target.value)}
-    placeholder="Phone"
-    className="w-full pl-10 p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    placeholder="Enter Your Phone Number"
+    className="w-full pl-14 py-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
     required
   />
 </div>
-<div className="relative">
-  <HiOutlineLocationMarker className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+
+            {/* Address Field */}
+            <div className="relative">
+  <HiOutlineLocationMarker className="absolute left-4 top-3.5 text-gray-400 text-xl" />
   <input
     type="text"
     value={address}
     onChange={(e) => setAddress(e.target.value)}
-    placeholder="Address"
-    className="w-full pl-10 p-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    placeholder="Enter Your Address"
+    className="w-full pl-14 py-3 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
     required
   />
 </div>
 
-
+            {/* Submit Button */}
             <button
               type="submit"
               className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-semibold transition"
@@ -128,6 +138,7 @@ const Register = () => {
             </button>
           </form>
 
+          {/* Login Link */}
           <p className="mt-6 text-center text-sm text-gray-400">
             Already have an account?{" "}
             <span
