@@ -11,3 +11,11 @@
 .chat-bubble--received {
   @apply bg-gray-200 mr-auto;
 }
+/* index.css or tailwind.css */
+.nav-link {
+  @apply text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium;
+}
+
+.mobile-link {
+  @apply block text-white hover:text-blue-400 px-3 py-2 rounded-md text-base;
+}

@@ -4,133 +4,94 @@ import { CiChat1 } from "react-icons/ci";
 import { useAuthStore } from "../../store/useAuthStore";
 
 const Header = () => {
-  const { user, clearAuth, logout } = useAuthStore();
+  const { user, logout } = useAuthStore();
   const navigate = useNavigate();
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // For mobile menu
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // For logout dropdown
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = () => {
-    logout(); 
-    navigate("/login");   };
+    logout();
+    navigate("/login");
+  };
 
-  // Toggle mobile menu visibility
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
     <nav className="bg-gray-800 shadow-md">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center text-white text-xl font-semibold">
+            <CiChat1 className="mr-2 text-2xl" /> Chat-App
+          </Link>
+
+          {/* Desktop Menu */}
+          <div className="hidden sm:flex space-x-4">
+            <NavLink to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</NavLink>
+            <NavLink to="/contact" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</NavLink>
+            <NavLink to="/policy" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</NavLink>
+            <NavLink to="/chat" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Chat</NavLink>
+            {!user ? (
+              <>
+                <NavLink to="/register" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</NavLink>
+                <NavLink to="/login" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</NavLink>
+              </>
+            ) : (
+              <div className="relative">
+                <button onClick={toggleDropdown} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  {user?.name}
+                </button>
+                {isDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-40 bg-gray-800 rounded-md shadow-lg z-10">
+                    <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700">
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
           {/* Mobile Menu Button */}
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="sm:hidden">
             <button
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              onClick={toggleMobileMenu} // Toggle the mobile menu
-              aria-controls="mobile-menu"
-              aria-expanded={isMobileMenuOpen ? "true" : "false"}
+              onClick={toggleMobileMenu}
+              className="text-gray-400 hover:text-white focus:outline-none"
             >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
-
-          {/* Logo */}
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <Link to="/" className="text-white text-xl font-semibold flex items-center">
-              <CiChat1 className="mr-2 text-2xl" /> Chat-App
-            </Link>
-          </div>
-
-          {/* Navbar Links (Desktop and Mobile) */}
-          <div className={`flex items-center justify-center sm:ml-6 ${isMobileMenuOpen ? "block" : "hidden"} sm:block`}>
-            <div className="flex space-x-4">
-              <NavLink
-                to="/"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Contact
-              </NavLink>
-               <NavLink
-                to="/policy"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                About
-              </NavLink>
-              <NavLink
-                to="/chat"
-                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Chat
-              </NavLink>
-              {!user ? (
-                <>
-                  <NavLink
-                    to="/register"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Register
-                  </NavLink>
-                  <NavLink
-                    to="/login"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Login
-                  </NavLink>
-                </>
-              ) : (
-                <div className="relative">
-                  <button
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    onClick={toggleDropdown} // Toggle the dropdown visibility
-                    aria-haspopup="true"
-                  >
-                    {user?.name}
-                  </button>
-                  {/* Dropdown Menu for Logout */}
-                  {isDropdownOpen && (
-                    <div className="absolute bg-gray-800 shadow-md rounded-md mt-1 right-0 w-40 z-10">
-                      <button
-                        onClick={handleLogout}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white w-full text-left px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Logout
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-             
-            </div>
-          </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="sm:hidden px-2 pt-2 pb-3 space-y-1 bg-gray-800">
+          <NavLink to="/" className="mobile-link">Home</NavLink>
+          <NavLink to="/contact" className="mobile-link">Contact</NavLink>
+          <NavLink to="/policy" className="mobile-link">About</NavLink>
+          <NavLink to="/chat" className="mobile-link">Chat</NavLink>
+          {!user ? (
+            <>
+              <NavLink to="/register" className="mobile-link">Register</NavLink>
+              <NavLink to="/login" className="mobile-link">Login</NavLink>
+            </>
+          ) : (
+            <button onClick={handleLogout} className="mobile-link text-left w-full">
+              Logout
+            </button>
+          )}
+        </div>
+      )}
     </nav>
   );
 };
