@@ -234,18 +234,20 @@ const ChatPage = () => {
           </div>
 
           <div className="flex-1 p-4 overflow-y-auto bg-[#0e1016]">
-            <div className="flex flex-col gap-2 max-w-3xl mx-auto">
+            <div className="flex flex-col gap-2 px-2">
+
               {messages.map((msg) => (
                 <div
-                  key={msg._id}
-                  className={`max-w-[75%] px-4 py-2 rounded-lg text-sm ${
-                    msg.sender._id === user._id
-                      ? "bg-indigo-600 self-end"
-                      : "bg-gray-700 self-start"
-                  }`}
-                >
-                  {msg.content}
-                </div>
+  key={msg._id}
+  className={`w-fit px-3 py-2 rounded-lg text-sm ${
+    msg.sender._id === user._id
+      ? "bg-indigo-600 ml-auto"
+      : "bg-gray-700 mr-auto"
+  }`}
+>
+  {msg.content}
+</div>
+
               ))}
             </div>
           </div>
