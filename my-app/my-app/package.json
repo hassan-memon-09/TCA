@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "my-app": "file:..",
+    "zustand": "^5.0.6"
+  }
+}
