@@ -48,7 +48,7 @@ const ChatPage = () => {
 
       const fetchChats = async () => {
         try {
-          const res = await axios.get("http://localhost:5000/api/v1/chat", {
+          const res = await axios.get(`${import.meta.env.VITE_REACT_BACKEND_URL}/api/v1/chat`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setChats(res.data);
@@ -71,7 +71,7 @@ const ChatPage = () => {
       if (selectedUser?.chatId && token) {
         try {
           const res = await axios.get(
-            `http://localhost:5000/api/v1/chat/message/${selectedUser.chatId}`,
+            `${import.meta.env.VITE_REACT_BACKEND_URL}/api/v1/chat/message/${selectedUser.chatId}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           setMessages(res.data);
@@ -89,7 +89,7 @@ const ChatPage = () => {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/v1/auth/users?search=${text}`,
+        `${import.meta.env.VITE_REACT_BACKEND_URL}/api/v1/auth/users?search=${text}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setSearchResults(res.data.users);
@@ -101,7 +101,7 @@ const ChatPage = () => {
   const handleSelectUser = async (u) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/chat",
+        `${import.meta.env.VITE_REACT_BACKEND_URL}/api/v1/chat`,
         { userId: u._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -119,7 +119,7 @@ const ChatPage = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/chat/message",
+        `${import.meta.env.VITE_REACT_BACKEND_URL}/api/v1/chat/message`,
         { chatId: selectedUser.chatId, content: input },
         { headers: { Authorization: `Bearer ${token}` } }
       );

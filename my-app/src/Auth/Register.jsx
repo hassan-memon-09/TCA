@@ -24,7 +24,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/auth/register", {
+      const res = await axios.post(`${import.meta.env.VITE_REACT_BACKEND_URL}/api/v1/auth/register`, {
         name,
         email,
         password,
@@ -34,7 +34,7 @@ const Register = () => {
 
       if (res.data.success) {
         toast.success(res.data.message);
-        const loginRes = await axios.post("http://localhost:5000/api/v1/auth/login", {
+        const loginRes = await axios.post(`${import.meta.env.VITE_REACT_BACKEND_URL}/api/v1/auth/login`, {
           email,
           password,
         });
